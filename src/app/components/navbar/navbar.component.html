@@ -27,6 +27,33 @@
           </li>
         </div>
       </ul>
+      <div class="text-light shoppingCart">
+        <button  mat-raised-button color="primary"
+        [matBadge]="cartItems>0? cartItems:null" matBadgePosition="after" (click)="onClickOnCart()"> <mat-icon>shopping_cart</mat-icon> </button>
+        <mat-card *ngIf="showMenu" class="text-light">
+          <mat-card-header>
+            <mat-card-title>Shopping Cart</mat-card-title>
+          </mat-card-header>
+          <hr>
+          <mat-card-content *ngFor="let product of products">
+            <div class="item">
+              <span>{{product.name.toUpperCase()}} ({{product.quantity}})</span>
+              <span class="fw-bold">${{product.price}}</span>
+            </div> 
+          </mat-card-content>
+          <hr *ngIf="products.length>0">
+          <div class="total" *ngIf="products.length>0">
+            <span class="mx-4 my-1">Total ({{cartItems}})</span>
+            <span class="fw-bold mx-4 my-1">${{total}} </span>
+          </div>
+          <hr *ngIf="products.length>0">
+          <div class="btns"  *ngIf="products.length>0">
+            <button class="mx-4 my-1" (click)="onGoToCart()"><mat-icon class="text-success ">shopping_cart</mat-icon></button>
+            <button class="mx-4 my-1" (click)="onClearCart()"> <mat-icon class="text-danger ">remove_shopping_cart</mat-icon> </button>
+          </div>
+          <p class="mx-4 text-warning" *ngIf="products.length===0">Cart Is Empty!</p>
+        </mat-card>
+      </div>
     </div>
   </div>
 </nav>

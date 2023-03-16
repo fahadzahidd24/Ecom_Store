@@ -34,6 +34,10 @@ button{
 nav{
   box-shadow: 0.5px 0.5px 20px 1px goldenrod;
 }
+.shoppingCart{
+  margin-right: 2rem;
+  margin-top: 10px;
+}
 ul{
   display: flex;
   justify-content: space-between;
@@ -47,4 +51,43 @@ a,button{
 }
 .auth,.pages{
   display: flex;
+}
+.mat-badge-content {
+  background: goldenrod;
+  color: rgb(255, 255, 255);
+}
+.mat-badge-content.mat-badge-content {
+  background: goldenrod;
+  color: rgb(255, 255, 255);
+}
+mat-card{
+  width: 20%;
+  position: absolute;
+  left: 78%;
+  z-index: 100;
+  /* box-shadow: 0.5px 0.5px 20px 1px goldenrod; */
+  border: 1px solid rgba(218, 165, 32, 0.5);
+}
+hr{
+  background-color: goldenrod;
+  color: goldenrod;
+  height: 2px;
+}
+.item{
+  display: flex;
+  justify-content: space-between;
+}
+.item>span{
+  margin: 5px;
+}
+.total{
+  display: flex;
+  justify-content: space-between;
+}
+.btns{
+  display: flex;
+  justify-content: space-between;
+}
+.btns>button>mat-icon:hover{
+  opacity: 0.7;
 }

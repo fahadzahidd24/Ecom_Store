@@ -15,14 +15,14 @@
       </div>
       <div class="mb-3">
         <label for="password" class="form-label mx-auto">Password * </label>
-        <input type="password" class="form-control bg-dark text-light " name="password" id="password" required ngModel #password="ngModel" minlength="5" maxlength="15">
+        <input type="password" class="form-control bg-dark text-light " name="password" id="password" required ngModel #password="ngModel">
         <button class="btn btn-outline-secondary eye" (click)="onEye()">
           <mat-icon >remove_red_eye</mat-icon>
         </button>
         <div class="text-light" *ngIf="!password.valid && password.touched">
           <div class="invalid-div pass-div">
             <p class="invalid-text">
-              Password must be between 5 and 15 characters !
+              Password required !
             </p>
           </div>
         </div>

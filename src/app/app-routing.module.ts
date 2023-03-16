@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminControlpageComponent } from './components/admin-controlpage/admin-controlpage.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"signup",component:SingupComponent},
   {path:"contact",component:ContactComponent},
+  {path:"cart",component:CartPageComponent},
   {path:"admin",component:AdminControlpageComponent, canActivate:[AuthGuard]},
   {path:"admin/:productId",component:AdminControlpageComponent, canActivate:[AuthGuard]},
 ];

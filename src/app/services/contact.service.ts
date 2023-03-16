@@ -18,4 +18,11 @@ export class ContactService {
 
     })
   }
+  sendOtp(email: string, otp: number) {
+    const contactData: Contact = { email: email, otp: otp }
+    this.http.post<{ message: string }>('http://localhost:3000/api/contact/otp', contactData).subscribe(res => {
+      console.log(res.message)
+      // this.snackBar.open("Response Received Successfully",'Close',{duration:3000})
+    })
+  }
 }

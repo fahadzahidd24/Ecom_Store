@@ -9,9 +9,10 @@ mongoose.set("strictQuery", false);
 
 const app = express();
 
-mongoose.connect('mongodb+srv://crud:DsAIUahDoaD6m6cB@crud.fg66fgt.mongodb.net/Ecome-Store').then(() => {
+mongoose.connect(`mongodb+srv://crud:${process.env.MONGO_PASS}@crud.fg66fgt.mongodb.net/Ecome-Store`).then(() => {
   console.log("Connected To Database")
-}).catch(() => {
+}).catch((err) => {
+  console.log(err)
   console.log("Connected Failed!");
 })
 

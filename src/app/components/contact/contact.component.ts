@@ -14,6 +14,7 @@ export class ContactComponent {
   onSubmit(form:NgForm){
     if(form.valid){
       this.contactService.sendMail(form.value.name,form.value.email,form.value.number,form.value.message);
+      form.reset();
     }
     else{
       this.snackBar.open("Please fill all the fields Correctly",'Close',{duration:3000})

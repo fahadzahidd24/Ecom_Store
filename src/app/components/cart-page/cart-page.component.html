@@ -1,0 +1,39 @@
+<div class="p-5 bg-dark mainDiv">
+    <h1 class="text-center text-light m-2" *ngIf="products.length===0">Your Cart Is Empty</h1>
+    <table class="table bg-dark text-center text-light rounded"
+        style="box-shadow: 0.2px 0.2px 10px 0.3px goldenrod;" *ngIf="products.length>0">
+    <thead class="border border-warning">
+        <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="border border-warning">
+      <tr *ngFor="let product of products">
+        <th scope="row"><img [src]="product.image" [alt]="product.name"></th>
+        <td>{{product.name}}</td>
+        <td>{{product.description}}</td>
+        <td class="plusMinus">
+            <button (click)="onReduceQuantity(product)">-</button>
+            <span>{{product.quantity}}</span>
+            <button (click)="onIncreaseQuantity(product)">+</button>
+        </td>
+        <td>{{product.price}}</td>
+        <td><button class="btn btn-danger fw-bold" (click)="onRemoveIem(product)" >X</button></td>
+    </tr>
+
+    </tbody>
+    <tfoot class="border border-warning">
+        <tr>
+            <td colspan="3"></td>
+            <td class="fw-bold">Total</td>
+            <td class="fw-bold">${{total}}</td>
+        </tr>
+    </tfoot>
+  </table>
+</div>

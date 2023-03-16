@@ -17,6 +17,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
 import { ContactComponent } from './components/contact/contact.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatCardModule} from '@angular/material/card';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SingupComponent,
     ProductComponent,
     AdminControlpageComponent,
-    ContactComponent
+    ContactComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatBadgeModule,
+    MatCardModule
+    
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

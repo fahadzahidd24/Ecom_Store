@@ -4,11 +4,11 @@
       <div class="card _card bg-dark text-light m-4" style="width: 18rem;box-shadow: 0.2px 5px 10px 0.3px goldenrod;">
         <img [src]="product.image" class="card-img-top" alt="product.name">
         <div class="card-body">
-          <h5 class="card-title">{{product.name}}</h5>
-          <p class="card-text">{{product.description}}</p>
-          <div class="d-flex justify-content-evenly align-items-center bg-secondary rounded p-1">
+          <h5 class="card-title fw-bold name">{{product.name}}</h5>
+          <p class="card-text text-secondary">{{product.description}}</p>
+          <div class="d-flex justify-content-evenly align-items-center bg-dark rounded p-1 priceDiv">
             <span class="card-text ">${{product.price}}</span>
-            <!-- <button class="btn"> 	<mat-icon class="text-light icon">shopping_cart</mat-icon> </button> -->
+            <button class="btn addToCart" (click)="onAddToCart(product)"> <mat-icon>add_shopping_cart</mat-icon> </button>
           </div>
         </div>
       </div>

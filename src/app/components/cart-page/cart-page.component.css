@@ -1,0 +1,27 @@
+.mainDiv{
+        min-height: 100vh;
+        /* top: 0; */
+        /* position: absolute; */
+        /* width: 100%; */
+        /* z-index: -1; */
+}
+table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 3rem;
+}
+img{
+    width: 100px;
+    height: 80px;
+  }
+  td{
+    vertical-align: middle;
+  }
+  .plusMinus>button{
+    background: none;
+    padding: 15px;
+    border:none;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+  }

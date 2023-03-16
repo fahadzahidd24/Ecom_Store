@@ -10,17 +10,22 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
+  private otp:number;
   message:string;
   private token:string;
   private isAuthenticated = false;
   // private tokenTimer:NodeJS.Timer;
   private tokenTimer:any;
   private authStatusListener = new Subject<{message:string,status:boolean}>();
+  private otpListener = new Subject<number>();
 
   constructor(private http: HttpClient,private router:Router,private cookieService:CookieService,private snackBar:MatSnackBar) { }
 
   getToken(){
     return this.token;
+  }
+  getOtp(){
+    return this.otp;
   }
 
   getIsAuth(){
@@ -29,6 +34,16 @@ export class AuthService {
 
   getAuthStatusListener(){
     return this.authStatusListener.asObservable();
+  }
+  getOtpListener(){
+    return this.otpListener.asObservable();
+  }
+
+  createOtp(email:string){
+    this.otp = Math.floor(100000 + Math.random() * 900000);
+    console.log("creating otp")
+    console.log("otp created")
+    this.otpListener.next(this.otp);
   }
 
   createUser(name: string, email: string, phone: number, password: string) {
@@ -39,9 +54,13 @@ export class AuthService {
         this.message = "User Created Successfully";
         this.snackBar.open(this.message,"Close",{duration:2000,panelClass: ['bg-dark', 'text-light']})
         this.router.navigate(['/login'])
-      });
+      },(error)=>{
+        this.message = "User Already Exists";
+        
+        this.snackBar.open(this.message,"Close",{duration:2000,panelClass: ['bg-dark', 'text-light']})
+        });
   }
-
+   
   loginUser(email: string, password: string) {
     const user: User = {  email: email, password: password };
     this.http.post<{message:string,token:string,expiresIn:number}>("http://localhost:3000/api/user/login", user)
