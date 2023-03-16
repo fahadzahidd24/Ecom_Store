@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+.titleLine{
+  font-family: 'Tilt Prism', cursive;
+  font-size: 2rem;
+  color: goldenrod;
+  margin-top: 8px;
+  text-shadow: 3px 1px 20px goldenrod;
+
+}
+.title{
+  color: rgb(203, 203, 203);
+  font-family: 'Abril Fatface', cursive;
+}
+.activee{
+  /* color: rgb(159, 159, 159); */
+  color: goldenrod;
+  border: 1px solid grey;
+  border-radius: 1em;
+  /* padding: 10px; */
+  background-color: rgb(103, 103, 103);
+}
+a,button{
+  color: white;
+}
+a:hover,button:hover{
+  color: goldenrod;
+}
+button{
+  background-color: transparent;
+  border: none;
+}
+nav{
+  box-shadow: 0.5px 0.5px 20px 1px goldenrod;
+}
+ul{
+  display: flex;
+  justify-content: space-between;
+  margin-left:2rem;
+  padding-right:5rem;
+  width: 100%;
+}
+a,button{
+  font-size: 17px;
+  margin-top: 2px;
+}
+.auth,.pages{
+  display: flex;
+}

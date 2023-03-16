@@ -1,0 +1,23 @@
+<div class="bg-dark w-full mainDiv p-5">
+  <div class="container bg-dark rounded py-3 px-0">
+    
+
+    <div class="bg-dark rounded p-2 px-5 my-4 searchDiv" style="box-shadow: 0.2px 0.2px 5px 0.3px goldenrod;">
+      <p class="titleLine">Get Everything Here!</p>
+      <form #searchForm="ngForm" class="d-flex" role="search" (input)="onSearch(searchForm)">
+        <input class="form-control me-2 bg-dark text-light" type="search" placeholder="Search" name="search" aria-label="Search" ngModel #search="ngModel">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+    </div>
+
+    <div class="loader text-center" *ngIf="isLoading">
+      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+    <h1 class="text-center text-light mb-7" *ngIf="products.length == 0 && !isLoading">No Product Available!</h1>
+    <div class="cards m-5">
+      <app-product></app-product>
+    </div>
+    <mat-paginator class="bg-dark text-light w-50 mx-auto paginator " style="box-shadow: 0.5px 0.5px 20px 1px rgb(113, 113, 94);" [length]="totalProducts" [pageSize]="productsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangePage($event)" *ngIf="!isLoading && products.length>0"></mat-paginator>
+  </div>
+</div>

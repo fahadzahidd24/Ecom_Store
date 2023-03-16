@@ -1,0 +1,16 @@
+span{
+  /* color: rgb(159, 0, 0); */
+  color: rgb(255, 226, 226);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 5px;
+}
+img{
+  height: 200px;
+}
+._card:hover{
+  transform: scale(1.2);
+  transition: all 0.1s ease-in-out 0.01s;
+  cursor: pointer;
+
+}

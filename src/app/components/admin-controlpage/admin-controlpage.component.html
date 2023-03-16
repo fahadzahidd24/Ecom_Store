@@ -1,0 +1,72 @@
+<div class="bg-dark mainDiv p-5">
+  <div class="bg-dark rounded p-2 px-5 my-4" style="box-shadow: 0.2px 0.2px 5px 0.3px goldenrod;">
+    <div class="buttons">
+      <button class="btn btn-warning" (click)="onAddProduct()">Add Products</button>
+      <form #searchForm="ngForm" class="d-flex formSearch" role="search" (input)="onSearch(searchForm)">
+        <input class="form-control me-2 bg-dark text-light" name="search" type="search" placeholder="Search" aria-label="Search" ngModel #search="ngModel">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+    </div>
+    <div class="loader text-center" *ngIf="isFormLoading">
+      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+    <!--  -->
+    <form #addProductForm="ngForm" class="text-light w-50 my-3" (submit)="onAddProductSubmit(addProductForm)"
+      *ngIf="addProduct && !isFormLoading">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name of Product</label>
+        <input type="text" class="form-control bg-dark text-light" name="name" id="name" aria-describedby="name"
+          required [ngModel]="product?.name" #name="ngModel">
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control bg-dark text-light" name="description" id="description" required
+          [ngModel]="product?.description" #description="ngModel">
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control bg-dark text-light" name="price" id="price" required
+          [ngModel]="product?.price" #price="ngModel">
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Image Url</label>
+        <input type="text" class="form-control bg-dark text-light" name="image" id="image" required
+          [ngModel]="product?.image" #image="ngModel">
+      </div>
+      <button type="submit" class="btn btn-success">{{mode.toUpperCase()}} Product</button>
+    </form>
+    <!--  -->
+  </div>
+  <div class="loader text-center" *ngIf="isLoading">
+    <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+  </div>
+  <h1 class="text-center text-light mb-7" *ngIf="products.length == 0 && !isLoading">No Products Added yet!</h1>
+  <table class="table bg-dark text-center text-light rounded my-4" *ngIf="!isLoading && products.length > 0"
+    style="box-shadow: 0.2px 0.2px 10px 0.3px goldenrod;">
+    <thead class="border border-warning">
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="border border-warning">
+      <tr *ngFor="let product of products">
+        <th scope="row"><img [src]="product.image" [alt]="product.name"></th>
+        <td>{{product.name}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td> <a class="btn btn-success" (click)="onEditProduct(product.id)">Edit</a></td>
+        <td><button class="btn btn-danger" (click)="onRemoveItem(product.id)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <mat-paginator class="bg-dark w-50 mx-auto paginator text-light my-5"
+    style="box-shadow: 0.5px 0.5px 20px 1px rgb(113, 113, 94);" [length]="totalProducts" [pageSize]="productsPerPage"
+    [pageSizeOptions]="pageSizeOptions" (page)="onChangePage($event)" ></mat-paginator>
+</div>

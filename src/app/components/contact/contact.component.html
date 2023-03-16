@@ -1,0 +1,52 @@
+<div class="w-full bg-dark mainDiv py-5">
+
+  <div class="w-50 mx-auto text-light formDiv" style="box-shadow: 0.2px 0.2px 10px 0.3px goldenrod;">
+    <form class="w-75 mx-auto" #contactForm="ngForm" (submit)="onSubmit(contactForm)">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name *</label>
+        <input type="text" class="form-control bg-dark text-light " id="name" name="name" aria-describedby="name"
+          required ngModel #name="ngModel" placeholder="For eg. Fahad">
+        <div class="invalid-div pass-div" *ngIf="!name.valid && name.touched">
+          <p class="invalid-text">
+            Password must be between 5 and 15 characters !
+          </p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label mx-auto">Email address *</label>
+        <input type="email" class="form-control bg-dark text-light " id="email" aria-describedby="email" name="email"
+          ngModel required email #email="ngModel" placeholder="something@something.com">
+          <div class="invalid-div pass-div" *ngIf="!email.valid && email.touched">
+            <p class="invalid-text">
+              Invalid Email !
+            </p>
+          </div>
+        <div id="email" class="form-text" *ngIf="email.valid">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label mx-auto">Phone Number *</label>
+        <input type="number" class="form-control bg-dark text-light " name="phone" id="phone" aria-describedby="phone"
+          required ngModel placeholder="+92********" minlength="11" maxlength="13" #phone="ngModel">
+        <div class="invalid-div pass-div" *ngIf="!phone.valid && phone.touched">
+          <p class="invalid-text">
+            Invalid Phone Number !
+          </p>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label mx-auto">Message * </label>
+          <textarea name="message" class="form-control bg-dark text-light" id="message" ngModel cols="30" rows="4"
+            placeholder="Hello, I'm Good" #message="ngModel" required minlength="5"></textarea>
+          <div class="invalid-div pass-div" *ngIf="!message.valid && message.touched">
+            <p class="invalid-text">
+              Minimum 5 characters required !
+            </p>
+          </div>
+        </div>
+      </div>
+
+        <button type="submit" class="btn btn-warning">Submit</button>
+    </form>
+
+  </div>
+
+</div>

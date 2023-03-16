@@ -1,0 +1,17 @@
+<div class="container text-center text-light"z >
+  <div class="row g-2">
+    <div class="col-4" *ngFor="let product of products">
+      <div class="card _card bg-dark text-light m-4" style="width: 18rem;box-shadow: 0.2px 5px 10px 0.3px goldenrod;">
+        <img [src]="product.image" class="card-img-top" alt="product.name">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <div class="d-flex justify-content-evenly align-items-center bg-secondary rounded p-1">
+            <span class="card-text ">${{product.price}}</span>
+            <!-- <button class="btn"> 	<mat-icon class="text-light icon">shopping_cart</mat-icon> </button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

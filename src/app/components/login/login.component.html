@@ -1,0 +1,33 @@
+<div class="w-full bg-dark mainDiv py-5">
+  <div class="w-25 mx-auto text-light formDiv" style="box-shadow: 0.2px 0.2px 10px 0.3px goldenrod;">
+    <form class="w-75 mx-auto" #loginForm="ngForm" (submit)="onLogin(loginForm)" >
+      <div class="mb-3">
+        <label for="email" class="form-label mx-auto">Email address *</label>
+        <input type="email" class="form-control bg-dark text-light " name="email" id="email" aria-describedby="email"  required email ngModel #email="ngModel">
+
+        <div class="text-light" *ngIf="!email.valid && email.touched">
+          <div class="invalid-div">
+            <p class="invalid-text">
+              Invalid Email !
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label mx-auto">Password * </label>
+        <input type="password" class="form-control bg-dark text-light " name="password" id="password" required ngModel #password="ngModel" minlength="5" maxlength="15">
+        <button class="btn btn-outline-secondary eye" (click)="onEye()">
+          <mat-icon >remove_red_eye</mat-icon>
+        </button>
+        <div class="text-light" *ngIf="!password.valid && password.touched">
+          <div class="invalid-div pass-div">
+            <p class="invalid-text">
+              Password must be between 5 and 15 characters !
+            </p>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-warning login">Login</button>
+    </form>
+  </div>
+</div>
